@@ -1,26 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ThemeProvider } from '@shopify/restyle';
 
 import LoadAssets from './src/utils/LoadAssets';
+import theme from './src/components/Theme';
 import fonts from './src/utils/fonts';
+import assets from './src/utils/assets';
+import Login from './src/screens/Login';
 
 export default function App() {
   return (
-    <LoadAssets fonts={fonts}>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+    <LoadAssets fonts={fonts} assets={assets}>
+      <ThemeProvider theme={theme}>
+        <StatusBar style="light" />
+        <Login />
+      </ThemeProvider>
     </LoadAssets>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
