@@ -20,6 +20,7 @@ const theme = createTheme({
     screenWidth: width - 40,
   },
   spacing: {
+    none: 0,
     s: 5,
     m: 10,
     l: 15,
@@ -55,6 +56,13 @@ const theme = createTheme({
     b2: {
       fontSize: 12,
       fontFamily: 'Poppins-Light',
+      color: 'text',
+      lineHeight: 24,
+      letterSpacing: 0.17,
+    },
+    b2m: {
+      fontSize: 12,
+      fontFamily: 'Poppins-Medium',
       color: 'text',
       lineHeight: 24,
       letterSpacing: 0.17,

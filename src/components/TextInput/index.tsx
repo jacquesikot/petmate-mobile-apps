@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   },
   eye: {
     zIndex: 1,
+    padding: 7,
   },
 });
 
@@ -67,7 +68,7 @@ const TextInput = ({
 }: Props) => {
   const [visible, setVisible] = useState<boolean>(false);
 
-  const reBorderColor = !touched ? 'white' : error ? 'red' : 'green';
+  const reBorderColor = !touched ? 'text' : error ? 'red' : 'green';
   const reColor = !touched ? 'text' : error ? 'red' : 'green';
   const borderColor = theme.colors[reBorderColor];
   const color = theme.colors[reColor];
