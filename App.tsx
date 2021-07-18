@@ -6,14 +6,14 @@ import LoadAssets from './src/utils/LoadAssets';
 import theme from './src/components/Theme';
 import fonts from './src/utils/fonts';
 import assets from './src/utils/assets';
-import Login from './src/screens/Login';
+import ForgotPassword from './src/screens/ForgotPassword';
 
 export default function App() {
   return (
     <LoadAssets fonts={fonts} assets={assets}>
       <ThemeProvider theme={theme}>
         <StatusBar style="light" />
-        <Login />
+        <ForgotPassword />
       </ThemeProvider>
     </LoadAssets>
   );

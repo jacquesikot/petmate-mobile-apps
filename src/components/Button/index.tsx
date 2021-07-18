@@ -32,7 +32,7 @@ const Button: FC<Props> = ({ type, label, icon, width, border }) => {
           backgroundColor: theme.colors[type],
           width: widthValue,
           borderWidth: border ? 1 : 0,
-          borderColor: border ? theme.colors.text : theme.colors.white,
+          borderColor: border ? theme.colors.light : theme.colors.white,
         },
       ]}>
       {icon && icon}

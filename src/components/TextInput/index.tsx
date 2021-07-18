@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   input: {
     width: theme.constants.screenWidth - wp(15),
     height: '95%',
-    color: theme.colors.text,
+    color: theme.colors.dark,
     fontFamily: 'Poppins-Regular',
     fontSize: 14,
   },
@@ -68,7 +68,7 @@ const TextInput = ({
 }: Props) => {
   const [visible, setVisible] = useState<boolean>(false);
 
-  const reBorderColor = !touched ? 'text' : error ? 'red' : 'green';
+  const reBorderColor = !touched ? 'light' : error ? 'red' : 'green';
   const reColor = !touched ? 'text' : error ? 'red' : 'green';
   const borderColor = theme.colors[reBorderColor];
   const color = theme.colors[reColor];

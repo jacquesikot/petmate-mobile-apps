@@ -1,66 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  StyleSheet,
   SafeAreaView,
   ImageBackground,
   TouchableOpacity,
   Keyboard,
+  KeyboardAvoidingView,
 } from 'react-native';
-import { AntDesign as Icon } from '@expo/vector-icons';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
 
-import theme, { Box, Text } from '../../components/Theme';
+import styles from './styles';
+import { Box, Text } from '../../components/Theme';
 import Logo from '../../svgs/Logo';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
+import Checkbox from '../../components/Checkbox';
 
-const ICON_SIZE = 22;
+const Register = () => {
+  const [checked, setChecked] = useState<boolean>(false);
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    width: '100%',
-  },
-  backgroundImage: {
-    width: '100%',
-    height: '100%',
-    paddingHorizontal: theme.constants.screenPadding / 2,
-    paddingTop: theme.constants.screenPadding,
-    paddingBottom: theme.constants.screenPadding,
-  },
-  headerText: {
-    marginTop: '20%',
-    height: 60,
-    justifyContent: 'space-between',
-  },
-  inputContainer: {
-    marginTop: 32,
-    height: 130,
-    justifyContent: 'space-between',
-    marginBottom: 10,
-  },
-  horizontalLine: {
-    width: theme.constants.screenWidth,
-    height: 2,
-    backgroundColor: theme.colors.white,
-    marginTop: 22,
-    marginBottom: 16,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  registerTextContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: hp(3),
-  },
-});
-
-const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -73,57 +29,45 @@ const Login = () => {
           resizeMode="cover">
           <Logo width={167} height={50} />
 
-          <Box style={styles.headerText}>
-            <Text variant="h1">Login</Text>
-            <Text variant="b2">Login With Your Account To continue</Text>
-          </Box>
+          <KeyboardAvoidingView behavior="position">
+            <Box style={styles.headerText}>
+              <Text variant="h1">Register</Text>
+              <Text variant="b2">Create a Account to start Using</Text>
+            </Box>
 
-          <Box style={styles.inputContainer}>
-            <TextInput placeholder="Email" />
-            <TextInput placeholder="Password" secured={true} />
-          </Box>
+            <Box style={styles.inputContainer}>
+              <TextInput placeholder="Name" />
+              <TextInput placeholder="Email Address" />
+              <TextInput placeholder="Password" secured={true} />
+            </Box>
+          </KeyboardAvoidingView>
 
-          <Text style={{ alignSelf: 'flex-end' }} variant="b2">
-            Forgot Password?
-          </Text>
-
-          <Box style={styles.horizontalLine} />
-
-          <Text style={{ marginBottom: 15 }} variant="b2">
-            Login with Gmail or Facebook
-          </Text>
-
-          <Box style={styles.buttonContainer}>
-            <Button
-              type="white"
-              icon={<Icon name="google" color="#DB4437" size={ICON_SIZE} />}
-              label="Google"
-              width="48%"
-              border
-            />
-            <Button
-              type="white"
-              icon={<Icon name="facebook-square" color="#4267B2" size={ICON_SIZE} />}
-              label="Facebook"
-              width="48%"
-              border
-            />
-          </Box>
-
-          <Box style={styles.registerTextContainer}>
-            <Text variant="b2">Dont have an account yet?</Text>
-            <Text variant="b2m" color="secondary" ml="s">
-              Register
+          <Box style={styles.checkboxContainer}>
+            <TouchableOpacity activeOpacity={0.7} onPress={() => setChecked(!checked)}>
+              <Checkbox checked={checked} />
+            </TouchableOpacity>
+            <Text style={styles.conditionsTextContainer}>
+              <Text variant="b2">By Signing up i Agree to the </Text>
+              <Text variant="b2m" color="secondary">
+                terms and conditions & privacy policy
+              </Text>
             </Text>
           </Box>
 
           <Box style={{ flex: 1 }} />
 
-          <Button type="primary" label="Login" />
+          <Box style={styles.registerTextContainer}>
+            <Text variant="b2">Already have an account?</Text>
+            <Text variant="b2m" color="secondary" ml="s">
+              Login
+            </Text>
+          </Box>
+
+          <Button type="primary" label="Create Account" />
         </ImageBackground>
       </TouchableOpacity>
     </SafeAreaView>
   );
 };
 
-export default Login;
+export default Register;
