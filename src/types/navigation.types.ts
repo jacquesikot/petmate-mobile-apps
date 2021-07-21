@@ -12,3 +12,9 @@ export type ProfileNavParamList = {
   Register: undefined;
   ForgotPassword: undefined;
 };
+
+export type ConsultNavParamList = {
+  MessageList: undefined;
+  Chat: undefined;
+  Consult: undefined;
+};

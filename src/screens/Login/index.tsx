@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, ImageBackground, TouchableOpacity, Keyboard } from 'react-native';
 import { AntDesign as Icon } from '@expo/vector-icons';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -9,16 +9,57 @@ import Logo from '../../svgs/Logo';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import { ProfileNavParamList } from '../../types/navigation.types';
+import ActivityScreen from '../../components/ActivityScreen';
+import Toast from 'react-native-toast-message';
+import { googleAuth } from '../../firebase/auth';
 
 const ICON_SIZE = 22;
 
 const Login = ({ navigation }: StackScreenProps<ProfileNavParamList, 'Login'>) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleGoogleLogin = async () => {
+    try {
+      setLoading(true);
+
+      await googleAuth();
+
+      navigation.navigate('Profile');
+
+      setLoading(false);
+
+      Toast.show({
+        text1: 'Login',
+        text2: 'Login Successfull',
+        type: 'success',
+        autoHide: true,
+        position: 'top',
+        visibilityTime: 3000,
+      });
+    } catch (error) {
+      setLoading(false);
+
+      console.log(error);
+
+      Toast.show({
+        text1: 'Login',
+        text2: 'Login Not Succesfull',
+        type: 'error',
+        autoHide: true,
+        position: 'top',
+        visibilityTime: 3000,
+      });
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
         activeOpacity={1}
         style={{ height: '100%' }}
         onPress={() => Keyboard.dismiss()}>
+        <ActivityScreen visible={loading} />
+
         <ImageBackground
           style={styles.backgroundImage}
           source={require('../../../assets/images/background.png')}
@@ -57,6 +98,7 @@ const Login = ({ navigation }: StackScreenProps<ProfileNavParamList, 'Login'>) =
               label="Google"
               width="48%"
               border
+              onPress={handleGoogleLogin}
             />
             <Button
               type="white"

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from 'react';
 import { StyleSheet, ImageBackground, SafeAreaView, FlatList } from 'react-native';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
@@ -6,8 +7,8 @@ import theme, { Box, Text } from '../../components/Theme';
 import AlarmIcon from '../../svgs/AlarmIcon';
 import CartIcon from '../../svgs/CartIcon';
 import PetCard from '../../components/PetCard';
-import Pet from '../../types/pet';
 import pets from '../../data/pets';
+import useUser from '../../hooks/useUser';
 
 const styles = StyleSheet.create({
   container: {},
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
+  const user = useUser();
   return (
     <SafeAreaView>
       <ImageBackground
@@ -52,7 +54,7 @@ const Home = () => {
         resizeMode="cover">
         <Box style={styles.header}>
           <Box style={styles.headTextContainer}>
-            <Text variant="h1">Hello</Text>
+            <Text variant="h1">Hello {user.email ? user.displayName : ''}</Text>
             <Text variant="b2m" color="secondary">
               Find a match to mate your pet
             </Text>

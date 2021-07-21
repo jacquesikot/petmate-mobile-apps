@@ -5,12 +5,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import theme, { Box } from '../components/Theme';
 import { AppNavParamList } from '../types/navigation.types';
-import { Home, Shop, AddPet, Consult, Profile, Chat } from '../screens';
+import { Home, Shop, AddPet } from '../screens';
 import HomeNavIcon from '../svgs/HomeNavIcon';
 import CartNavIcon from '../svgs/CartNavIcon';
 import PlusNavIcon from '../svgs/PlusNavIcon';
 import ConsultNavIcon from '../svgs/ConsultNavIcon';
 import ProfileNavIcon from '../svgs/ProfileNavIcon';
+import ConsultNav from './ConsultNav';
 
 import ProfileNav from './ProfileNav';
 
@@ -31,7 +32,6 @@ const AppNav = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <AppStack.Navigator
         tabBarOptions={{
-          keyboardHidesTabBar: true,
           showLabel: false,
           activeTintColor: theme.colors.primary,
           inactiveTintColor: theme.colors.light,
@@ -50,6 +50,7 @@ const AppNav = () => {
                 </Box>
               );
             },
+            unmountOnBlur: true,
           }}
         />
 
@@ -83,7 +84,7 @@ const AppNav = () => {
 
         <AppStack.Screen
           name="Consult"
-          component={Chat}
+          component={ConsultNav}
           options={{
             tabBarIcon: ({ color, focused }) => {
               return (
@@ -106,6 +107,7 @@ const AppNav = () => {
                 </Box>
               );
             },
+            unmountOnBlur: true,
           }}
         />
       </AppStack.Navigator>
