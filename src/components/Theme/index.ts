@@ -12,9 +12,11 @@ const theme = createTheme({
     dark: '#1A1A1A',
     text: '#8D909E',
     yellow: '#FDCA00',
+    lightYellow: '#fdf1d6',
     red: '#F44336',
     green: '#4CD964',
     light: '#E6E9EF',
+    blue: '#3969F6',
   },
   constants: {
     screenPadding: 40,
@@ -48,6 +50,16 @@ const theme = createTheme({
       fontFamily: 'Montserrat-Bold',
       color: 'secondary',
     },
+    h2: {
+      fontSize: 19,
+      fontFamily: 'Montserrat-Bold',
+      color: 'secondary',
+    },
+    h3: {
+      fontSize: 16,
+      fontFamily: 'Poppins-SemiBold',
+      color: 'secondary',
+    },
     b1: {
       fontSize: 14,
       fontFamily: 'Poppins-Regular',
@@ -67,6 +79,10 @@ const theme = createTheme({
       color: 'text',
       lineHeight: 24,
       letterSpacing: 0.17,
+    },
+    b3: {
+      fontSize: 12,
+      fontFamily: 'Poppins-Regular',
     },
   },
   breakpoints: {
