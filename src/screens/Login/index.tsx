@@ -1,16 +1,18 @@
 import React from 'react';
 import { SafeAreaView, ImageBackground, TouchableOpacity, Keyboard } from 'react-native';
 import { AntDesign as Icon } from '@expo/vector-icons';
+import { StackScreenProps } from '@react-navigation/stack';
 
 import styles from './styles';
 import { Box, Text } from '../../components/Theme';
 import Logo from '../../svgs/Logo';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
+import { ProfileNavParamList } from '../../types/navigation.types';
 
 const ICON_SIZE = 22;
 
-const Login = () => {
+const Login = ({ navigation }: StackScreenProps<ProfileNavParamList, 'Login'>) => {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -33,9 +35,14 @@ const Login = () => {
             <TextInput placeholder="Password" secured={true} />
           </Box>
 
-          <Text style={{ alignSelf: 'flex-end' }} variant="b2">
-            Forgot Password?
-          </Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={styles.forgotContainer}
+            onPress={() => navigation.navigate('ForgotPassword')}>
+            <Text style={{ alignSelf: 'flex-end' }} variant="b2">
+              Forgot Password?
+            </Text>
+          </TouchableOpacity>
 
           <Box style={styles.horizontalLine} />
 

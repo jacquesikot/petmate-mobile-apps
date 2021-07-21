@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import theme, { Box, Text } from '../Theme';
 
@@ -19,13 +19,16 @@ interface Props {
   icon?: ReactNode;
   width?: number | string;
   border?: boolean;
+  onPress?: () => void;
 }
 
-const Button: FC<Props> = ({ type, label, icon, width, border }) => {
+const Button: FC<Props> = ({ type, label, icon, width, border, onPress = () => true }) => {
   const widthValue = width ? width : theme.constants.screenWidth;
 
   return (
-    <Box
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={onPress}
       style={[
         styles.container,
         {
@@ -42,7 +45,7 @@ const Button: FC<Props> = ({ type, label, icon, width, border }) => {
         style={{ color: type === 'white' ? theme.colors.secondary : theme.colors.white }}>
         {label}
       </Text>
-    </Box>
+    </TouchableOpacity>
   );
 };
 

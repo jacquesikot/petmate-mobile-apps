@@ -3,19 +3,19 @@ import { StyleSheet } from 'react-native';
 import theme from '../../components/Theme';
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    width: '100%',
+  container: {},
+  forgotContainer: {
+    width: '33%',
+    alignSelf: 'flex-end',
   },
   backgroundImage: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     paddingHorizontal: theme.constants.screenPadding / 2,
     paddingTop: theme.constants.screenPadding,
-    paddingBottom: theme.constants.screenPadding,
+    paddingBottom: 10,
   },
   headerText: {
-    marginTop: '20%',
+    marginTop: '10%',
     height: 60,
     justifyContent: 'space-between',
   },
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   registerTextContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 30,
+    marginBottom: 20,
   },
 });
 

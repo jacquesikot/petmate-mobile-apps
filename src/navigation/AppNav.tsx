@@ -5,12 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import theme, { Box } from '../components/Theme';
 import { AppNavParamList } from '../types/navigation.types';
-import { Home, Shop, AddPet, Consult, Profile } from '../screens';
+import { Home, Shop, AddPet, Consult, Profile, Chat } from '../screens';
 import HomeNavIcon from '../svgs/HomeNavIcon';
 import CartNavIcon from '../svgs/CartNavIcon';
 import PlusNavIcon from '../svgs/PlusNavIcon';
 import ConsultNavIcon from '../svgs/ConsultNavIcon';
 import ProfileNavIcon from '../svgs/ProfileNavIcon';
+
+import ProfileNav from './ProfileNav';
 
 const styles = StyleSheet.create({
   tabBarBox: {
@@ -81,7 +83,7 @@ const AppNav = () => {
 
         <AppStack.Screen
           name="Consult"
-          component={Consult}
+          component={Chat}
           options={{
             tabBarIcon: ({ color, focused }) => {
               return (
@@ -95,7 +97,7 @@ const AppNav = () => {
 
         <AppStack.Screen
           name="Profile"
-          component={Profile}
+          component={ProfileNav}
           options={{
             tabBarIcon: ({ color, focused }) => {
               return (
